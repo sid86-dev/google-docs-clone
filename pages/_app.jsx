@@ -1,11 +1,10 @@
 import '../styles/globals.css'
-import type {AppProps} from 'next/app'
 import "@material-tailwind/react/tailwind.css";
 import Head from 'next/head'
 import Button from '@material-tailwind/react/Button'
 import Icon from '@material-tailwind/react/Icon'
 
-function MyApp({Component, pageProps}: AppProps) {
+function MyApp({Component, pageProps}) {
     return (
         <>
             <Head>
