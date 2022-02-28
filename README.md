@@ -1,3 +1,4 @@
 # GoogleDocs Clone
 
-### Build with - Next.js, Twailwind CSS, Firebase, React 
+### Build with : 
+### `Next.js`, `Tailwind CSS`, `Firebase`, `React` 
