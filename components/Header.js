@@ -2,7 +2,7 @@ import React from 'react';
 import Button from '@material-tailwind/react/Button'
 import Icon from '@material-tailwind/react/Icon'
 
-function Header(props) {
+function Header({photoUrl}) {
     return (
         <header className="sticky top-0 z-50 flex item-center px-4 py-2 shadow-md bg-white">
             <div className='mt-1 flex items-center w-full'>
@@ -37,7 +37,7 @@ function Header(props) {
 
             <img loading="lazy"
                  className=" cursor-pointer h-12 w-12 rounded-full ml-2"
-                 src="https://thumbs.dreamstime.com/b/default-avatar-profile-vector-user-profile-default-avatar-profile-vector-user-profile-profile-179376714.jpg"
+                 src={photoUrl}
                  alt="profile"
             />
             </div>

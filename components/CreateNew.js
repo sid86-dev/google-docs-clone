@@ -5,7 +5,6 @@ import Image from "next/image";
 
 function CreateNew(props) {
     return (
-
         <section className="bg-[#F8F9FA] pb-10 px-10">
             <div className="max-w-3xl mx-auto">
                 <div className="flex items-center justify-between py-1">
