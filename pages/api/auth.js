@@ -6,7 +6,7 @@ let handleLogin = (loginData) => {
     const data = loginData._tokenResponse;
     setCookies('email', data.email);
     setCookies('photoUrl', data.photoUrl);
-    window.location.reload();
+    window.location.replace('/');
 }
 
 const signInWithGoogle = () => {

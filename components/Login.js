@@ -9,7 +9,7 @@ import signInWithGoogle from "../pages/api/auth";
 function Login(props) {
     return (
         <div className="flex flex-col items-center justify-center min-h-screen py-2">
-            <Image src="https://www.securedsigning.com/products/img/googleDocLogo.png"
+            <Image src="/googleDocLogo.png"
                    height="300"
                    width="550"
                    objectFit="contain"

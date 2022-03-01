@@ -8,8 +8,7 @@ function Header({photoUrl}) {
     const router = useRouter();
 
     return (
-        <header className="sticky top-0 z-50 flex item-center px-4 py-2 shadow-md bg-white">
-            <div className='mt-1 flex items-center w-full'>
+        <header className="sticky top-0 z-50 flex items-center px-4 py-2 shadow-md bg-white">
             <Button color="gray"
                     buttonType="outline"
                     rounded={true}
@@ -18,13 +17,11 @@ function Header({photoUrl}) {
                     ripple="dark">
                 <Icon name="menu" size="3xl"/>
             </Button>
-            <div className="md:block mt-1 flex items-center">
-                <Icon name="description" size="4xl" color="blue"/>
-                <h2 className="ml-2 text-gray-700 text-2xl">
-                    Docs
-                </h2>
-            </div>
-            <div className="mx-5 md:mx-20 flex flex-grow items-center p-5 py-2 h-12 bg-gray-100 text-gray-600
+            <Icon name="description" size="5xl" color="blue"/>
+            <h1 className="ml-2 text-gray-700 text-2xl">
+                Docs
+            </h1>
+            <div className="mx-5 md:mx-20 flex flex-grow items-center px-5 py-2 bg-gray-100 text-gray-600
              rounded-lg focus-within:shadow-md focus-within:text-gray-600 ">
                 <Icon name="search" size="3xl" color="darkgray"/>
                 <input type="text" placeholder="search"
@@ -42,9 +39,8 @@ function Header({photoUrl}) {
                  className=" cursor-pointer h-12 w-12 rounded-full ml-2"
                  src={photoUrl}
                  alt="profile"
-                 onClick={()=> router.push('/login')}
+                 onClick={() => router.push('/login')}
             />
-            </div>
 
         </header>
     );
