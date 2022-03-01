@@ -1,8 +1,12 @@
 import React from 'react';
 import Button from '@material-tailwind/react/Button'
 import Icon from '@material-tailwind/react/Icon'
+import {useRouter} from 'next/router'
+
 
 function Header({photoUrl}) {
+    const router = useRouter();
+
     return (
         <header className="sticky top-0 z-50 flex item-center px-4 py-2 shadow-md bg-white">
             <div className='mt-1 flex items-center w-full'>
@@ -34,13 +38,14 @@ function Header({photoUrl}) {
                     ripple="dark">
                 <Icon name="apps" size="3xl" color="gray"/>
             </Button>
-
             <img loading="lazy"
                  className=" cursor-pointer h-12 w-12 rounded-full ml-2"
                  src={photoUrl}
                  alt="profile"
+                 onClick={()=> router.push('/login')}
             />
             </div>
+
         </header>
     );
 }
