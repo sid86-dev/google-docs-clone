@@ -1,6 +1,6 @@
 import Icon from "@material-tailwind/react/Icon";
 import React from "react";
-import {useCollectionOnce} from "react-firebase-hooks/firestore";
+import {useCollectionOnce, useCollection} from "react-firebase-hooks/firestore";
 import {db} from "../firebase-config";
 import DocumentRow from "./DocumentRow";
 import Skeleton from 'react-loading-skeleton'
@@ -10,7 +10,7 @@ import 'react-loading-skeleton/dist/skeleton.css'
 
 export default function DocList({email}) {
 
-    const [snapshot, loadingSnapshot] = useCollectionOnce(
+    const [snapshot, loadingSnapshot] = useCollection(
         db.collection("userDocs")
             .doc(email)
             .collection('docs')

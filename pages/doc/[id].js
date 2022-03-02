@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {getCookie} from "cookies-next";
 import Login from "../../components/Login";
 import Icon from "@material-tailwind/react/Icon";
@@ -9,6 +9,9 @@ import Button from "@material-tailwind/react/Button";
 import TextEditor from "../../components/TextEditor";
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
+import Model from "@material-tailwind/react/Modal";
+import ModelBody from "@material-tailwind/react/ModalBody";
+import ModelFooter from "@material-tailwind/react/ModalFooter";
 
 function Doc(props) {
     const email = getCookie('email');
@@ -25,8 +28,31 @@ function Doc(props) {
     
     const deleteDoc = async () => {
         await db.collection('userDocs').doc(email).collection('docs').doc(id).delete();
+        setShowModel(false);
         router.push('/');
     };
+
+    const [showModel, setShowModel] = useState(false);
+
+    const model = (
+        <Model size="sm"
+               active={showModel}
+               toggler={() => setShowModel(false)}
+
+        >
+            <ModelBody>
+                <p className="outline-none w-full">Are you sure to delete</p>
+
+            </ModelBody>
+            <ModelFooter>
+                <Button color='gray'
+                        buttonType='link'
+                        onClick={(e) => setShowModel(false)}
+                        ripple='dark'>Cancel</Button>
+                <Button color='red' onClick={deleteDoc} ripple='light'>Delete</Button>
+            </ModelFooter>
+        </Model>
+    );
 
     // if user is logged in
     if (email === undefined) return <Login/>;
@@ -41,13 +67,13 @@ function Doc(props) {
                 </span>
                 <div className="flex-grow px-2">
                     {loadingSnapshot ? <Skeleton width='15%'/> :
-                        <h2>{snapshot?.data()?.fileName}</h2>}
+                        <h2 className="ml-1">{snapshot?.data()?.fileName}</h2>}
                     <div className="flex items-center text-sm space-x-1 -ml-1 h-8 text-gray-600">
                         <p className="option">File</p>
                         <p className="option">Edit</p>
                         <p className="option">View</p>
                         <p className="option">Insert</p>
-                        <p className="option" onClick={deleteDoc}>Delete</p>
+                        <p className="option" onClick={() => setShowModel(true)}>Delete</p>
                         <p className="option">Tools</p>
                     </div>
                 </div>
@@ -68,6 +94,7 @@ function Doc(props) {
             </header>
 
             <TextEditor email={email} id={id}/>
+            {model}
         </>
     )
         ;
