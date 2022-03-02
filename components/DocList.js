@@ -3,14 +3,12 @@ import React from "react";
 import {useCollectionOnce} from "react-firebase-hooks/firestore";
 import {db} from "../firebase-config";
 import DocumentRow from "./DocumentRow";
-import {useRouter} from "next/router";
 import Skeleton from 'react-loading-skeleton'
 import Button from "@material-tailwind/react/Button";
 import 'react-loading-skeleton/dist/skeleton.css'
 
 
 export default function DocList({email}) {
-    const router = useRouter();
 
     const [snapshot, loadingSnapshot] = useCollectionOnce(
         db.collection("userDocs")

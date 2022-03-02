@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import {getCookie} from "cookies-next";
 import Login from "../../components/Login";
 import Icon from "@material-tailwind/react/Icon";
@@ -53,7 +53,10 @@ function Doc(props) {
                         ripple="light">
                     <Icon name="people" size="md"/>SHARE
                 </Button>
-                <img className="rounded-full cursor-pointer h-10 w-10 ml-2" alt="profilePic" src={photoUrl}/>
+                <img className="rounded-full cursor-pointer h-10 w-10 ml-2"
+                     alt="profilePic"
+                     src={photoUrl}
+                     onClick={() => router.push('/login')}/>
             </header>
 
             <TextEditor email={email} id={id}/>
