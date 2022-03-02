@@ -6,6 +6,7 @@ import DocumentRow from "./DocumentRow";
 import {useRouter} from "next/router";
 import Skeleton from 'react-loading-skeleton'
 import Button from "@material-tailwind/react/Button";
+import 'react-loading-skeleton/dist/skeleton.css'
 
 
 export default function DocList({email}) {
