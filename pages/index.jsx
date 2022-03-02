@@ -13,12 +13,12 @@ import Icon from "@material-tailwind/react/Icon";
 import Image from "next/image";
 
 function Home() {
-
     const email = getCookie('email');
     const photoUrl = getCookie('photoUrl');
 
     // if user is logged in
-    if (email === undefined) return <Login/>;
+    if (email === undefined ) return <Login/>;
+
 
     const [showModel, setShowModel] = useState(false);
     const [input, setInput] = useState('');
@@ -81,7 +81,7 @@ function Home() {
                     </div>
                     <div>
                         <div className="relative h-52 w-40 border-2 cursor-pointer hover:border-blue-700">
-                            <Image src="/newDoc.png" layout="fill" onClick={() => setShowModel(true)}/>
+                            <Image src="/newDoc.png" priority={true} layout="fill" onClick={() => setShowModel(true)}/>
                         </div>
                         <p className="ml-2 mt-2 font-semibold text-sm text-gray-700">Blank</p>
                     </div>

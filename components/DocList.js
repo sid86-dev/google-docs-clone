@@ -4,11 +4,14 @@ import {useCollectionOnce} from "react-firebase-hooks/firestore";
 import {db} from "../firebase-config";
 import DocumentRow from "./DocumentRow";
 import {useRouter} from "next/router";
+import Skeleton from 'react-loading-skeleton'
+import Button from "@material-tailwind/react/Button";
+
 
 export default function DocList({email}) {
     const router = useRouter();
 
-    const [snapshot] = useCollectionOnce(
+    const [snapshot, loadingSnapshot] = useCollectionOnce(
         db.collection("userDocs")
             .doc(email)
             .collection('docs')
@@ -22,7 +25,24 @@ export default function DocList({email}) {
                     <p className="mr-12">Date Created</p>
                     <Icon name="folder" size="3xl" color="gray"/>
                 </div>
-                {snapshot?.docs.map(doc => (
+
+                {loadingSnapshot? <> <div className="flex items-center p-4  rounded-lg hover:bg-gray-100 text-gray-700 text-sm cursor-pointer">
+                    <Icon name="article" size="3xl" color="blue"/>
+                    <p className="flex-grow pl-5 w-10 pr-10 truncate"><Skeleton/></p>
+                    <p className="pr-5 text-sm"><Skeleton/></p>
+                    <Button color="gray" buttonType="outline" rounded={true} iconOnly={true} ripple="dark" className="border-0">
+                        <Icon name="more_vert" size="3xl" /></Button>
+                </div>
+                        <div className="flex items-center p-4  rounded-lg hover:bg-gray-100 text-gray-700 text-sm cursor-pointer">
+                    <Icon name="article" size="3xl" color="blue"/>
+                    <p className="flex-grow pl-5 w-10 pr-10 truncate"><Skeleton/></p>
+                    <p className="pr-5 text-sm"><Skeleton/></p>
+                    <Button color="gray" buttonType="outline" rounded={true} iconOnly={true} ripple="dark" className="border-0">
+                        <Icon name="more_vert" size="3xl" /></Button>
+                </div>
+
+                </>
+                    : snapshot?.docs.map(doc => (
                     <DocumentRow key={doc.id}
                                  id={doc.id}
                                  fileName={doc.data().fileName}

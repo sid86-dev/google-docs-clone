@@ -1,6 +1,5 @@
 import React from 'react';
 import Button from "@material-tailwind/react/Button";
-import Icon from "@material-tailwind/react/Icon";
 import Image from "next/image";
 import signInWithGoogle from "../pages/api/auth";
 

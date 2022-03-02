@@ -4,6 +4,8 @@ import { setCookies } from 'cookies-next';
 
 let handleLogin = (loginData) => {
     const data = loginData._tokenResponse;
+    sessionStorage.setItem('email', data.email);
+    sessionStorage.setItem('photoUrl', data.photoUrl);
     setCookies('email', data.email);
     setCookies('photoUrl', data.photoUrl);
     window.location.replace('/');

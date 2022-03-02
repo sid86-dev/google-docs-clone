@@ -4,8 +4,9 @@ import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth"
 import 'firebase/compat/firestore';
 
+
 const firebaseConfig = {
-    apiKey: "AIzaSyBvao2EldLrAgTVC1VHRe2wHF_LXMGm5YU",
+    apiKey: `${process.env.GOOLGE_APIKEY}`,
     authDomain: "throttlerz-278e0.firebaseapp.com",
     projectId: "throttlerz-278e0",
     storageBucket: "throttlerz-278e0.appspot.com",
