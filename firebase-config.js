@@ -6,7 +6,7 @@ import 'firebase/compat/firestore';
 
 
 const firebaseConfig = {
-    apiKey: `${process.env.GOOLGE_APIKEY}`,
+    apiKey: `${process.env.NEXT_PUBLIC_GOOGLE_APIKEY}`,
     authDomain: "throttlerz-278e0.firebaseapp.com",
     projectId: "throttlerz-278e0",
     storageBucket: "throttlerz-278e0.appspot.com",
