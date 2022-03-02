@@ -7,8 +7,8 @@ export default NextAuth({
     providers: [
         // OAuth authentication providers...
         GoogleProvider({
-            clientId: '381555884526-1ne4qphqcflon5b3fv2phttdool64luj.apps.googleusercontent.com',
-            clientSecret: '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'
+            clientId: {process.env.NEXT_PUBLIC_GOOGLE_CLIENTID},
+            clientSecret: {process.env.NEXT_PUBLIC_GOOGLE_CLIENTSECRET}
         }),
     ],
     adapter: FirebaseAdapter(db),
