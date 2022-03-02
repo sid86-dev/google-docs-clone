@@ -22,24 +22,32 @@ function Doc(props) {
     if (!loadingSnapshot && !snapshot?.data()?.fileName) {
         router.replace('/');
     }
+    
+    const deleteDoc = async () => {
+        await db.collection('userDocs').doc(email).collection('docs').doc(id).delete();
+        router.push('/');
+    };
 
     // if user is logged in
     if (email === undefined) return <Login/>;
     return (
         <>
             <header className="flex justify-between items-center p-3 pb-1">
-                <span onClick={() => router.push('/')} className="cursor-pointer">
-                    <Icon name="description" size="5xl" color="blue"/>
+                <span onClick={() => router.push('/')} className="cursor-pointer flex items-center mx-2">
+                     <Icon name="description" size="5xl" color="blue"/>
+            <h1 className="ml-2 text-gray-700 text-2xl">
+                Docs
+            </h1>
                 </span>
                 <div className="flex-grow px-2">
-                    {loadingSnapshot? <Skeleton width='15%'/> :
-                    <h2>{snapshot?.data()?.fileName}</h2>}
+                    {loadingSnapshot ? <Skeleton width='15%'/> :
+                        <h2>{snapshot?.data()?.fileName}</h2>}
                     <div className="flex items-center text-sm space-x-1 -ml-1 h-8 text-gray-600">
                         <p className="option">File</p>
                         <p className="option">Edit</p>
                         <p className="option">View</p>
                         <p className="option">Insert</p>
-                        <p className="option">Format</p>
+                        <p className="option" onClick={deleteDoc}>Delete</p>
                         <p className="option">Tools</p>
                     </div>
                 </div>
