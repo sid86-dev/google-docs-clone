@@ -1,5 +1,6 @@
-import '../styles/globals.css'
 import "@material-tailwind/react/tailwind.css";
+import '../styles/globals.css'
+
 import Head from 'next/head'
 import {Router} from "next/router";
 import NProgress from 'nprogress'
